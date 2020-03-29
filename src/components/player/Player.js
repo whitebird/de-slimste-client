@@ -3,6 +3,8 @@ import uuid from 'uuid/v4';
 import io from 'socket.io-client';
 import Setup from './Setup';
 import Round1 from './Round1';
+import Round2 from './Round2';
+import Round5 from './Round5';
 
 function getOrSetId() {
   const id = localStorage.getItem('id');
@@ -58,7 +60,15 @@ export default class Player extends Component {
       return <div>Not connected to server</div>;
     }
     return (
-      <div>
+      <div
+        style={{
+          textAlign: 'center',
+          backgroundColor: '#a4100d',
+          height: '100vh',
+          margin: 0,
+          padding: 0
+        }}
+      >
         {round === 0 ? (
           <Setup
             setName={this.setName}
@@ -66,7 +76,9 @@ export default class Player extends Component {
             name={name}
           />
         ) : null}
-        {round === 1 ? <Round1 /> : null}
+        {round === 1 ? <Round1 gameState={gameState} /> : null}
+        {round === 2 ? <Round2 gameState={gameState} /> : null}
+        {round === 5 ? <Round5 gameState={gameState} /> : null}
       </div>
     );
   }

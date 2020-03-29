@@ -11,6 +11,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     const presenter = new URL(window.location).searchParams.get('presenter');
+    console.log('presenter', presenter);
     this.state = { isPresenter: presenter !== null };
   }
 
@@ -18,9 +19,9 @@ export default class App extends Component {
     const { isPresenter } = this.state;
 
     if (isPresenter) {
-      return <Presenter socketEndpoint="http://localhost:5000" />;
+      return <Presenter socketEndpoint="http://192.168.0.244:5000" />;
     }
 
-    return <Player socketEndpoint="http://localhost:5000" />;
+    return <Player socketEndpoint="http://192.168.0.244:5000" />;
   }
 }
